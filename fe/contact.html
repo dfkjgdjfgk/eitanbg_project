@@ -122,6 +122,18 @@
 
         // Clear form
         document.getElementById('contactForm').reset();
+              fetch("http://localhost:3000/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, email, phone, subject, message })
+      })
+        .then(response => response.text())
+        .then(data => alert("Data sent successfully: " + data))
+        .catch(err => console.error(err));
+    });
+
 
       });
     </script>
