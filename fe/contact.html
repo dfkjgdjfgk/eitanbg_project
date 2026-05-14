@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>צור קשר</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
       <div class="container">
-        <h1>האתר שלי</h1>
-        <nav>
-          <ul>
-            <li><a href="index.html">בית</a></li>
-            <li><a href="about.html">אודות</a></li>
-            <li><a href="contact.html">צור קשר</a></li>
-          </ul>
-        </nav>
+        <div class="header__wrap">
+            <div class="logo">
+            <img src="imges/bawling.jpg" alt="logo">
+            </div>
+          <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">
+            <span class="bar"></span>
+          </button>
+          <nav class="main-nav" aria-label="Main navigation">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="in_class.html">class</a></li>
+            </ul>
+          </nav>
+        </div>
+       
+        
       </div>
-    </header>
+  <body>
 
     <main>
       <div class="container">
-        <h2>צור קשר</h2>
+        <h2>Contact Us</h2>
+
         <div class="contact-info">
-          <p>אימייל: example@mail.com</p>
-          <p>טלפון: +1 123-456-7890</p>
+          <p>Email: example@mail.com</p>
+          <p>Phone: 050-1234567</p>
         </div>
+
         <form id="contactForm">
-          <label for="fullName">שם מלא:</label>
+          <label for="fullName">Full Name:</label>
           <input type="text" id="fullName" name="fullName" required><br><br>
-          
-          <label for="email">אימייל:</label>
+
+          <label for="email">Email:</label>
           <input type="email" id="email" name="email" required><br><br>
-          
-          <label for="phone">טלפון:</label>
+
+          <label for="phone">Phone:</label>
           <input type="tel" id="phone" name="phone" required><br><br>
-          
-          <label for="subject">נושא ההודעה:</label>
+
+          <label for="subject">Message Subject:</label>
           <input type="text" id="subject" name="subject" required><br><br>
-          
-          <label for="content">תוכן ההודעה:</label>
+
+          <label for="content">Message Content:</label>
           <textarea id="content" name="content" required></textarea><br><br>
-          
-          <button type="submit">שלח</button>
+
+          <button type="submit">Send</button>
         </form>
       </div>
     </main>
@@ -53,54 +65,64 @@
         <div class="footer_warp">
           <div class="foter_logo">
             <img src="imges/white ball.webp" alt="">
-            
+          </div>
+
+          <p>© 2025 My Website. All rights reserved.</p>
         </div>
-        <p>© 2025 האתר שלי. כל הזכויות שמורות.</p>
       </div>
     </footer>
 
     <script>
       document.getElementById('contactForm').addEventListener('submit', function(event) {
+
         event.preventDefault();
+
         const fullName = document.getElementById('fullName').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const subject = document.getElementById('subject').value.trim();
         const content = document.getElementById('content').value.trim();
-        
-        // Validation
+
+        // Full name validation
         if (fullName.length < 3) {
-          alert('השם המלא חייב להיות לפחות 3 תווים');
+          alert('Full name must contain at least 3 characters');
           return;
         }
-        
+
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!emailRegex.test(email)) {
-          alert('אימייל לא חוקי');
+          alert('Invalid email address');
           return;
         }
-        
+
+        // Phone validation
         const phoneRegex = /^\d{10,}$/;
+
         if (!phoneRegex.test(phone)) {
-          alert('טלפון חייב להיות לפחות 10 ספרות');
+          alert('Phone number must contain at least 10 digits');
           return;
         }
-        
+
+        // Subject validation
         if (subject.length < 5) {
-          alert('נושא ההודעה חייב להיות לפחות 5 תווים');
+          alert('Message subject must contain at least 5 characters');
           return;
         }
-        
+
+        // Content validation
         if (content.length < 10) {
-          alert('תוכן ההודעה חייב להיות לפחות 10 תווים');
+          alert('Message content must contain at least 10 characters');
           return;
         }
-        
+
         // Success
-        alert('ההודעה נשלחה בהצלחה!');
-        
+        alert('Message sent successfully!');
+
         // Clear form
         document.getElementById('contactForm').reset();
+
       });
     </script>
   </body>
